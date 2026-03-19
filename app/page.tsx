@@ -1,8 +1,11 @@
 import React from 'react'
 import ExploreBtn from './components/explorebtn'
 import EventCards from './components/EventCards'
-import {events} from '../lib/constants'
-const page = () => {
+import {IEvent} from '@/Database/event_model'
+const base_url=process.env.base_url;
+const page = async() => {
+  const response=await fetch (`${base_url}/api/events`)
+  const {events}=await response.json();
   return (
     <section>
       <h1 className="text-center">The Hub for every Dev <br/> Event you can't miss!</h1>
@@ -11,8 +14,8 @@ const page = () => {
       <div className="mt-20 space-y-7" >
         <h3 className="mx-2">Featured Events</h3>
         <ul className="events list-none">
-          {events.map((e)=>(
-            <li key={e.id}>
+          {events && events.length>0 && events.map((e:IEvent)=>(
+            <li key={e.title}>
               <EventCards {...e} />
             </li>
           ))}
