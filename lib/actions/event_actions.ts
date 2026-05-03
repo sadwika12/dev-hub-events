@@ -1,6 +1,6 @@
 'use server';
 
-import Event from '@/database/event_model';
+import Event from '@/Database/event_model';
 import connectDB from "@/lib/mongoose";
 
 export const getSimilarEventsBySlug = async (slug: string) => {

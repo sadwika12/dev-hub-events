@@ -1,6 +1,6 @@
 import React from 'react'
-import ExploreBtn from './components/explorebtn'
-import EventCards from './components/EventCards'
+import ExploreBtn from '@/app/components/explorebtn'
+import EventCards from '@/app/components/EventCards'
 import {IEvent} from '@/Database/event_model'
 const base_url=process.env.base_url;
 const page = async() => {

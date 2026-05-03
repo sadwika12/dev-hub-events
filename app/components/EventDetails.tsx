@@ -3,8 +3,8 @@ import { notFound } from "next/navigation"
 import { IEvent } from "@/Database/event_model"
 import { getSimilarEventsBySlug } from "@/lib/actions/event_actions"
 import Image from "next/image"
-import EventCards from "@/app/components/EventCards"
-import EventBooking from "@/app/components/BookEvent"
+import EventCards from "./EventCards"
+import EventBooking from "./BookEvent"
 const BASE_URL = process.env.base_url;
 
 const EventDetailItem = ({ icon, alt, label }: { icon: string; alt: string; label: string; }) => (
@@ -94,14 +94,14 @@ const EventDetails = async ({ params }: { params: Promise<{ slug: string }> }) =
                         <EventDetailItem icon="/icons/audience.svg" alt="audience" label={audience} />
                     </section>
 
-                    <EventAgenda agendaItems={JSON.parse(agenda[0])} />
+                    <EventAgenda agendaItems={agenda} />
 
                     <section className="flex-col-gap-2">
                         <h2>About the Organizer</h2>
                         <p>{organizer}</p>
                     </section>
 
-                    <EventTags tags={JSON.parse(tags[0])} />
+                    <EventTags tags={tags} />
                 </div>
                 <aside className="booking">
                     <div className="signup-card">
