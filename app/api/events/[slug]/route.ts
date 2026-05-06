@@ -47,3 +47,51 @@ export async function GET(req: NextRequest, context: RouteContext) {
     );
   }
 }
+
+
+export async function PUT(
+  request: Request, 
+  { params }: { params: Promise<{ slug: string }> }
+) {
+  await connectDB();
+  const { slug } = await params;
+  const formData = await request.formData();
+  
+  const rawData = Object.fromEntries(formData);
+  const updateData: Record<string, any> = {};
+  for (const [key, value] of Object.entries(rawData)) {
+    if (key === 'image') {
+      const file = value as File;
+      if (file && file.size > 0 && file.name !== "") {
+        updateData.image = file.name; 
+      }
+      continue; 
+    }
+    updateData[key] = value;
+  }
+
+ 
+  if (updateData.agenda) {
+    updateData.agenda = (updateData.agenda as string).split('\n').filter(Boolean);
+  }
+  if (updateData.tags) {
+    updateData.tags = (updateData.tags as string).split(',').filter(Boolean);
+  }
+
+  try {
+    const updatedEvent = await Event.findOneAndUpdate(
+      { slug: slug },
+      { $set: updateData },
+      { returnDocument: 'after', runValidators: true }
+    );
+
+    if (!updatedEvent) {
+      return NextResponse.json({ message: "Event not found" }, { status: 404 });
+    }
+
+    return NextResponse.json({ event: updatedEvent });
+  } catch (error) {
+    console.error("Update Error:", error);
+    return NextResponse.json({ message: "Internal Server Error" }, { status: 500 });
+  }
+}

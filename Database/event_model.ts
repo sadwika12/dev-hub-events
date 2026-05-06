@@ -1,4 +1,4 @@
-import {Schema,model,models,Document} from 'mongoose';
+import {Schema,model,models,Document,Types} from 'mongoose';
 export interface IEvent extends Document{
   title:string;
   slug:string;
@@ -14,6 +14,7 @@ export interface IEvent extends Document{
   agenda:string[];
   organizer:string;
   tags:string[];
+  createdBy: Types.ObjectId 
   createdAt:Date;
   updatedAt:Date;
 }
@@ -34,13 +35,13 @@ const EventSchema=new Schema<IEvent>({
     type:String,
     required:[true,'Please provide a description for the event'],
     trim:true,
-    maxlength:[1000,'Description cannot be more thn 1000 characters'],
+    maxlength:[10000,'Description cannot be more than 10000 characters'],
   },
   overview:{
     type:String,
     required:[true,'Overview is required'],
     trim:true,
-    maxlength:[500,'Overview cannot be more than 500 characters'],
+    maxlength:[5000,'Overview cannot be more than 5000 characters'],
   },
   image:{
     type:String,
@@ -99,7 +100,13 @@ const EventSchema=new Schema<IEvent>({
       message: 'At least one tag is required',
     },
   },
-},{
+  createdBy: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    required: [true, 'Creator is required']
+  },
+},
+{
     timestamps: true, 
   },
 );

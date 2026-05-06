@@ -12,7 +12,7 @@ const EventBooking = ({eventId,slug}:{eventId:string,slug:string}) => {
         alert("Booking successful! A confirmation email has been sent to you.");
       }
       else{
-        console.error("Booking failed:",error);
+        alert("Booking failed!"+ error ||"Please try again later");
       }
       
   }
