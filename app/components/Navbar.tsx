@@ -38,6 +38,11 @@ const Navbar = async () => {
               Create Event
             </Link>
           </li>
+          <li>
+            <Link href="/events/my-events" className="text-sm font-medium text-white/70 hover:text-white transition-colors">
+              My Events
+            </Link>
+          </li>
         </ul>
 
         

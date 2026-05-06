@@ -1,10 +1,13 @@
 import React from 'react'
+import { auth } from '@/auth'
 import { notFound } from "next/navigation"
 import { IEvent } from "@/Database/event_model"
 import { getSimilarEventsBySlug } from "@/lib/actions/event_actions"
 import Image from "next/image"
 import EventCards from "./EventCards"
 import EventBooking from "./BookEvent"
+import { getBookingCount } from "@/lib/actions/event_actions"
+import EventActions from './EventActions'
 const BASE_URL = process.env.base_url;
 
 const EventDetailItem = ({ icon, alt, label }: { icon: string; alt: string; label: string; }) => (
@@ -35,7 +38,7 @@ const EventTags = ({ tags }: { tags: string[] }) => (
 
 const EventDetails = async ({ params }: { params: Promise<{ slug: string }> }) => {
     const { slug } = await params;
-
+    
     let event;
     try {
         const request = await fetch(`${BASE_URL}/api/events/${slug}`, {
@@ -64,9 +67,13 @@ const EventDetails = async ({ params }: { params: Promise<{ slug: string }> }) =
 
     if(!description) return notFound();
 
-    const bookings = 10;
+    const bookingCount = await getBookingCount(event._id)
 
     const similarEvents: IEvent[] = await getSimilarEventsBySlug(slug);
+    const session = await auth()
+
+    const isCreator = session?.user?.id === event?.createdBy?.toString();
+   
 
     return (
         <section id="event">
@@ -102,15 +109,18 @@ const EventDetails = async ({ params }: { params: Promise<{ slug: string }> }) =
                     </section>
 
                     <EventTags tags={tags} />
+                    {isCreator && (
+                        <EventActions eventId={event._id} eventData={event} />
+                    )}
                 </div>
                 <aside className="booking">
                     <div className="signup-card">
                         <h2>Book Your Spot</h2>
-                        {bookings > 0 ? (
+                        {bookingCount > 0 ? (
                             <p className="text-sm">
-                                Join {bookings} people who have already booked their spot!
+                                Join Now! {bookingCount} {bookingCount === 1 ? 'person is' : 'people are'} attending. 
                             </p>
-                        ): (
+                            ) : (
                             <p className="text-sm">Be the first to book your spot!</p>
                         )}
 
