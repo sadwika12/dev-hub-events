@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { auth, signOut } from '@/auth'
-import MobileMenu from './MobileMenu' // We will create this next
+import MobileMenu from './MobileMenu'
 
 const Navbar = async () => {
   const session = await auth()
