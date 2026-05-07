@@ -221,7 +221,7 @@ const page = async () => {
               <nav className="flex flex-col gap-3">
                 {[
                   { label: 'Create Event', href: '/events/create' },
-                  { label: 'My Events', href: '/dashboard/my-events' },
+                  { label: 'My Events', href: '/events/my-events' },
                 ].map(item => (
                   <Link key={item.label} href={item.href} className="text-white/30 hover:text-primary text-sm transition-all duration-200">
                     {item.label}
