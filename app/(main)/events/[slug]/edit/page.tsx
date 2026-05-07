@@ -71,25 +71,22 @@ const EditEventPage = () => {
       <h1 className="text-4xl font-bold text-white mb-10">Edit Event</h1>
       
       <form onSubmit={handleSubmit} className="space-y-6">
-        {/* 1. Title */}
         <div className="flex flex-col gap-2">
           <label className="text-white/70 text-sm">Title</label>
           <input name="title" defaultValue={eventData.title} className={inputClass} required />
         </div>
 
-        {/* 2. Description */}
         <div className="flex flex-col gap-2">
           <label className="text-white/70 text-sm">Description</label>
           <textarea name="description" defaultValue={eventData.description} rows={4} className={inputClass} required />
         </div>
 
-        {/* 3. Overview */}
         <div className="flex flex-col gap-2">
           <label className="text-white/70 text-sm">Overview (Card Summary)</label>
           <textarea name="overview" defaultValue={eventData.overview} rows={2} className={inputClass} required />
         </div>
 
-        {/* 4 & 5. Date & Time */}
+       
         <div className="grid grid-cols-2 gap-4">
           <div className="flex flex-col gap-2">
             <label className="text-white/70 text-sm">Date</label>
@@ -101,13 +98,11 @@ const EditEventPage = () => {
           </div>
         </div>
 
-        {/* 6. Location */}
         <div className="flex flex-col gap-2">
           <label className="text-white/70 text-sm">Location</label>
           <input name="location" defaultValue={eventData.location} className={inputClass} required />
         </div>
 
-        {/* 7. Mode */}
         <div className="flex flex-col gap-2">
           <label className="text-white/70 text-sm">Mode</label>
           <select name="mode" defaultValue={eventData.mode} className={inputClass} required>
@@ -117,25 +112,21 @@ const EditEventPage = () => {
           </select>
         </div>
 
-        {/* 8. Audience */}
         <div className="flex flex-col gap-2">
           <label className="text-white/70 text-sm">Audience</label>
           <input name="audience" defaultValue={eventData.audience} className={inputClass} required />
         </div>
 
-        {/* 9. Organizer */}
         <div className="flex flex-col gap-2">
           <label className="text-white/70 text-sm">Organizer</label>
           <input name="organizer" defaultValue={eventData.organizer} className={inputClass} required />
         </div>
 
-        {/* 10. Image (Optional) */}
         <div className="flex flex-col gap-2">
           <label className="text-white/70 text-sm">Event Image (Leave blank to keep current)</label>
           <input name="image" type="file" accept="image/*" className={inputClass} />
         </div>
 
-        {/* 11. Agenda (Dynamic List) */}
         <div className="flex flex-col gap-3">
           <label className="text-white/70 text-sm">Agenda</label>
           <p className="text-white/30 text-xs">Add or modify items to update the event schedule</p>
@@ -176,7 +167,6 @@ const EditEventPage = () => {
             <span>+</span> Add agenda item
           </button>
         </div>
-        {/* 10. Tags Section */}
         <div className="flex flex-col gap-3">
           <label className="text-white/70 text-sm">Tags</label>
           <p className="text-white/30 text-xs">Press Enter or comma to add a tag</p>
@@ -200,7 +190,6 @@ const EditEventPage = () => {
             </div>
           )}
 
-          {/* Tag Input Field */}
           <div className="flex gap-2">
             <input
               type="text"

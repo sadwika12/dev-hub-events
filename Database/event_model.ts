@@ -27,7 +27,7 @@ const EventSchema=new Schema<IEvent>({
   },
   slug:{
     type:String,
-    unique:true,
+    unique:true, // This already creates a unique index on slug
     lowercase:true,
     trim:true,
   },
@@ -45,7 +45,7 @@ const EventSchema=new Schema<IEvent>({
   },
   image:{
     type:String,
-    required:[true,'Immage URL is required'],
+    required:[true,'Image URL is required'],
     trim:true,
   },
   venue: {
@@ -173,10 +173,6 @@ function normalizeTime(timeString: string): string {
   
   return `${hours.toString().padStart(2, '0')}:${minutes}`;
 }
-
-
-EventSchema.index({ slug: 1 }, { unique: true });
-
 
 EventSchema.index({ date: 1, mode: 1 });
 
