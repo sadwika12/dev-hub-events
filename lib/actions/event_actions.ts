@@ -32,3 +32,41 @@ export const getMyEvents = async (userId: string) => {
     
   return JSON.parse(JSON.stringify(events)); 
 };
+
+
+// lib/actions/event_actions.ts
+export const getFilteredEvents = async ({
+  search = '',
+  mode = '',
+  tag = ''
+}: {
+  search?: string
+  mode?: string
+  tag?: string
+}) => {
+  try {
+    await connectDB()
+
+    const query: Record<string, unknown> = {}
+
+    if (search) {
+      query.title = { $regex: search, $options: 'i' }
+    }
+
+    if (mode) {
+      query.mode = mode
+    }
+
+    if (tag) {
+      query.tags = { $in: [tag] }
+    }
+
+    const events = await Event.find(query)
+      .sort({ createdAt: -1 })
+      .lean()
+
+    return JSON.parse(JSON.stringify(events))
+  } catch {
+    return []
+  }
+}
