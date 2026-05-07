@@ -83,6 +83,15 @@ CLOUDINARY_API_SECRET=your_api_secret
 npm run dev
 
 ```
+## 🔮 Future Improvements & AI Integration
+- **AI-Powered Recommendations:** Implementing a recommendation engine to suggest events based on user interests and past attendance.
+- **Smart Search:** Moving beyond keywords to semantic search (NLP) to help users find events based on their learning goals.
+- **Extending Auth:** Expanding login options to include **Google and GitHub OAuth** for a faster onboarding experience.
+- **Automated Sync:** One-click **Google Calendar** integration and automated email reminders for upcoming bookings.
+- **Organizer Insights:** A data-driven dashboard for organizers featuring analytics on event reach and engagement.
+- **Real-time Engagement:** Adding attendee chat and a community review/rating system for each event.
+- **Personalized Experience:** Expanded user dashboards with event bookmarking and a "wishlist" for upcoming hackathons.
+
 ## 🤝 Contributing
 
 Contributions are welcome!
