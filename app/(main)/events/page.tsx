@@ -1,28 +1,3 @@
-// import React from 'react'
-// import EventCards from '@/app/components/EventCards'
-// import {IEvent} from '@/Database/event_model'
-// import Link from 'next/link'
-// import Image from 'next/image'
-// const base_url=process.env.base_url;
-// const EventPage=async()=> {
-//   const response=await fetch (`${base_url}/api/events`)
-//   const {events}=await response.json();
-//   return (
-//     <section className="min-h-screen px-6 py-12">
-//       <h1 className="text-4xl font-bold text-white mb-10">All Events</h1>
-//       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-//         {events && events.map((event: IEvent) => (
-//           <EventCards key={event.slug} {...event} />
-//         ))}
-//       </div>
-//     </section>
-//   )
-// }
-
-// export default EventPage;
-
-
-// app/(main)/events/page.tsx
 'use client'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
@@ -54,7 +29,7 @@ const EventsPage = () => {
   return (
     <section className="min-h-screen px-6 py-12">
 
-      {/* Header */}
+   
       <div className="flex items-center justify-between mb-8">
         <h1 className="text-4xl font-bold text-white">All Events</h1>
         <Link
@@ -65,7 +40,7 @@ const EventsPage = () => {
         </Link>
       </div>
 
-      {/* Search */}
+     
       <div className="mb-6">
         <input
           type="text"
@@ -76,7 +51,7 @@ const EventsPage = () => {
         />
       </div>
 
-      {/* Mode filter */}
+      
       <div className="flex items-center gap-2 mb-8 flex-wrap">
         {MODES.map((m) => (
           <button
@@ -93,14 +68,14 @@ const EventsPage = () => {
         ))}
       </div>
 
-      {/* Loading */}
+     
       {loading && (
         <div className="flex justify-center py-20">
           <div className="w-8 h-8 border-2 border-white/20 border-t-white rounded-full animate-spin" />
         </div>
       )}
 
-      {/* No results */}
+    
       {!loading && events.length === 0 && (
         <div className="flex flex-col items-center justify-center py-20 gap-3">
           <p className="text-white/40 text-lg">No events found</p>
@@ -108,7 +83,6 @@ const EventsPage = () => {
         </div>
       )}
 
-      {/* Events grid */}
       {!loading && events.length > 0 && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {events.map((event: IEvent) => (
