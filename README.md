@@ -80,4 +80,20 @@ CLOUDINARY_API_SECRET=your_api_secret
 
 # Start the development server
 
-npm run dev```
+npm run dev
+
+```
+## 🤝 Contributing
+
+Contributions are welcome!
+
+If you'd like to contribute to DevEvent:
+
+1. Fork the repository
+2. Create a new feature branch
+3. Make your changes
+4. Commit your changes
+5. Push the branch
+6. Open a Pull Request
+
+For major changes, please open an issue first.
