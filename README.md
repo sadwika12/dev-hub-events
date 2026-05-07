@@ -2,10 +2,6 @@
 
 > The central hub for developer events — hackathons, conferences, and meetups, all in one place.
 
-![Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js)
-![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-green?style=flat-square&logo=mongodb)
-![Tailwind](https://img.shields.io/badge/Tailwind-CSS-blue?style=flat-square&logo=tailwindcss)
-![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)
 
 **Live Demo:** https://dev-hub-events-2026.vercel.app/
 
@@ -38,6 +34,11 @@ Developer events in India are currently scattered across LinkedIn, Twitter, coll
 - **Owner Controls:** Edit and delete your own events through a dedicated dashboard.
 - **Real-time Analytics:** Track live booking counts for every event.
 
+### 📅 Booking Management
+- Book events with email
+- Live booking count
+- Duplicate booking prevention
+
 ---
 
 ## 🛠 Tech Stack
@@ -56,14 +57,32 @@ Developer events in India are currently scattered across LinkedIn, Twitter, coll
 
 ## 🚀 Getting Started
 
-### Prerequisites
-- Node.js 18+
-- MongoDB Atlas account
-- Cloudinary account
-
 ### Installation
 
 ```bash
-git clone [https://github.com/sadwika12/dev-hub-events.git](https://github.com/sadwika12/dev-hub-events.git)
+git clone [https://github.com/sadwika12/dev-hub-events.git]
 cd dev-hub-events
 npm install
+
+---
+
+### 1. Environment Setup
+
+Create a file named `.env.local` in the root directory of your project and add the following variables:
+
+```env
+MONGODB_URI=mongodb+srv://your_uri
+AUTH_SECRET=your_auth_secret
+NEXTAUTH_URL=http://localhost:3000
+base_url=http://localhost:3000
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_API_KEY=your_api_key
+CLOUDINARY_API_SECRET=your_api_secret
+
+# Start the development server
+
+npm run dev
+
+## Contributing
+
+Pull requests are welcome. For major changes please open an issue first.
