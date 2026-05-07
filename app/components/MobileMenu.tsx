@@ -28,10 +28,10 @@ export default function MobileMenu({ user }: { user?: User | null }) {
 
   return (
     <>
-      {/* Hamburger Button - High Z-Index to stay on top */}
+      {/* Hamburger Button - High Z-Index ensures you can always click it */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex flex-col gap-1.5 p-2 rounded-xl hover:bg-white/10 transition-all z-[100] relative cursor-pointer active:scale-90"
+        className="flex flex-col gap-1.5 p-2 rounded-xl hover:bg-white/10 transition-all z-[9999] relative cursor-pointer active:scale-90"
         aria-label="Menu"
       >
         <span className={`w-5 h-0.5 bg-white transition-all duration-300 ${isOpen ? "rotate-45 translate-y-2" : ""}`} />
@@ -39,18 +39,18 @@ export default function MobileMenu({ user }: { user?: User | null }) {
         <span className={`w-5 h-0.5 bg-white transition-all duration-300 ${isOpen ? "-rotate-45 -translate-y-2" : ""}`} />
       </button>
 
-      {/* Full Screen Overlay Container */}
+      {/* Full Screen Overlay Wrapper */}
       {isOpen && (
-        <div className="fixed inset-0 z-[90] flex justify-end items-start p-4 pt-24 sm:p-10 sm:pt-24">
+        <div className="fixed inset-0 z-[9998] flex justify-end items-start pointer-events-auto">
           
-          {/* Backdrop - This now sits BEHIND the menu using z-0 */}
+          {/* Backdrop - Stops clicks from hitting the Home Page */}
           <div
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm cursor-default"
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm pointer-events-auto"
             onClick={() => setIsOpen(false)}
           />
 
-          {/* Menu Panel - Higher Z-Index ensures clicks hit the links */}
-          <div className="relative w-[280px] bg-zinc-900 border border-white/20 rounded-3xl shadow-2xl overflow-hidden ring-1 ring-white/10 animate-in zoom-in-95 duration-200 z-10">
+          {/* Menu Panel - Absolute positioning inside the fixed wrapper */}
+          <div className="relative mt-24 mr-4 sm:mr-10 w-[280px] bg-zinc-900 border border-white/20 rounded-3xl shadow-2xl overflow-hidden ring-1 ring-white/10 z-[9999] pointer-events-auto animate-in zoom-in-95 duration-200">
             
             {/* User Section */}
             {user && (
@@ -93,10 +93,10 @@ export default function MobileMenu({ user }: { user?: User | null }) {
                   key={item.href}
                   href={item.href}
                   onClick={() => setIsOpen(false)}
-                  className="flex items-center gap-4 px-6 py-4 text-white hover:bg-white/10 transition-all cursor-pointer group pointer-events-auto"
+                  className="flex items-center gap-4 px-6 py-4 text-white hover:bg-white/10 transition-all cursor-pointer group pointer-events-auto relative z-[10000]"
                 >
-                  <span className="text-lg group-hover:scale-110 transition-transform pointer-events-none">{item.icon}</span>
-                  <span className="text-sm font-medium pointer-events-none">{item.label}</span>
+                  <span className="text-lg group-hover:scale-110 transition-transform">{item.icon}</span>
+                  <span className="text-sm font-medium">{item.label}</span>
                 </Link>
               ))}
             </nav>
@@ -106,7 +106,7 @@ export default function MobileMenu({ user }: { user?: User | null }) {
               {user ? (
                 <button
                   onClick={handleSignOut}
-                  className="w-full text-xs font-bold text-white bg-red-600/20 hover:bg-red-600/40 transition-all border border-red-500/50 rounded-2xl py-3 cursor-pointer pointer-events-auto"
+                  className="w-full text-xs font-bold text-white bg-red-600/20 hover:bg-red-600/40 transition-all border border-red-500/50 rounded-2xl py-3 cursor-pointer pointer-events-auto relative z-[10000]"
                 >
                   Sign Out
                 </button>
@@ -114,7 +114,7 @@ export default function MobileMenu({ user }: { user?: User | null }) {
                 <Link
                   href="/auth/signin"
                   onClick={() => setIsOpen(false)}
-                  className="block w-full text-xs text-center font-bold text-black bg-white hover:bg-gray-100 transition-all rounded-2xl py-3 cursor-pointer pointer-events-auto"
+                  className="block w-full text-xs text-center font-bold text-black bg-white hover:bg-gray-100 transition-all rounded-2xl py-3 cursor-pointer pointer-events-auto relative z-[10000]"
                 >
                   Sign In
                 </Link>
