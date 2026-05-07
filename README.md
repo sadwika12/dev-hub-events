@@ -70,7 +70,6 @@ npm install
 
 Create a file named `.env.local` in the root directory of your project and add the following variables:
 
-```env
 MONGODB_URI=mongodb+srv://your_uri
 AUTH_SECRET=your_auth_secret
 NEXTAUTH_URL=http://localhost:3000
@@ -81,9 +80,4 @@ CLOUDINARY_API_SECRET=your_api_secret
 
 # Start the development server
 
-npm run dev
-
-
-
-### Installation
-Pull requests are welcome. For major changes please open an issue first.
+npm run dev```
