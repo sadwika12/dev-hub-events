@@ -9,7 +9,8 @@ const Navbar = async () => {
   const user = session?.user
 
   return (
-    <nav className="flex items-center justify-between py-3 px-6 mx-4 md:mx-10 mt-4 md:mt-6 max-w-full rounded-full border border-white/20 bg-white/5 backdrop-blur-md">
+    // Change your nav wrapper to this:
+      <nav className="flex items-center justify-between py-3 px-5 md:px-6 mx-4 md:mx-10 mt-4 md:mt-6 max-w-full rounded-full border border-white/20 bg-white/10 backdrop-blur-md shadow-2xl">
       
       {/* Logo Section */}
       <div className="flex items-center gap-2 z-50">
