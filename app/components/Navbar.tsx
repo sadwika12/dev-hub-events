@@ -19,13 +19,13 @@ const Navbar = async () => {
         </span>
       </div>
 
-      {/* Desktop Navigation - Hidden on Mobile */}
+      {/* Desktop Navigation */}
       <div className="hidden md:flex items-center gap-6">
         <ul className="flex items-center gap-6 list-none">
-          <li><Link href="/" className="nav-link">Home</Link></li>
-          <li><Link href="/events" className="nav-link">Events</Link></li>
-          <li><Link href="/events/create" className="nav-link">Create</Link></li>
-          <li><Link href="/events/my-events" className="nav-link">My Events</Link></li>
+          <li><Link href="/" className="text-sm font-medium text-white/70 hover:text-white transition-colors">Home</Link></li>
+          <li><Link href="/events" className="text-sm font-medium text-white/70 hover:text-white transition-colors">Events</Link></li>
+          <li><Link href="/events/create" className="text-sm font-medium text-white/70 hover:text-white transition-colors">Create</Link></li>
+          <li><Link href="/events/my-events" className="text-sm font-medium text-white/70 hover:text-white transition-colors">My Events</Link></li>
         </ul>
 
         {user && <div className="w-px h-4 bg-white/20" />}
@@ -42,21 +42,18 @@ const Navbar = async () => {
                 )}
              </div>
              <form action={async () => { 'use server'; await signOut({ redirectTo: '/auth/signin' }) }}>
-                <button type="submit" className="logout-btn">Logout</button>
+                <button type="submit" className="text-sm font-medium text-white/40 hover:text-white transition-colors border border-white/10 hover:border-white/30 rounded-full px-3 py-1">
+                  Logout
+                </button>
              </form>
           </div>
         )}
       </div>
 
-      {/* Mobile Menu Button - Visible only on Mobile */}
+      {/* Mobile Menu Button */}
       <div className="md:hidden">
         <MobileMenu user={user} />
       </div>
-
-      <style jsx>{`
-        .nav-link { @apply text-sm font-medium text-white/70 hover:text-white transition-colors; }
-        .logout-btn { @apply text-sm font-medium text-white/40 hover:text-white transition-colors border border-white/10 hover:border-white/30 rounded-full px-3 py-1; }
-      `}</style>
     </nav>
   )
 }
