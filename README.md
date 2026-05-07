@@ -1,36 +1,108 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 DevEvent
 
-## Getting Started
+> The central hub for developer events — hackathons, conferences, and meetups, all in one place.
 
-First, run the development server:
+
+**Live Demo:** https://dev-hub-events-2026.vercel.app/
+
+---
+
+## 💡 Why DevEvent?
+
+Developer events in India are currently scattered across LinkedIn, Twitter, college notice boards, and WhatsApp groups. **DevEvent** solves this by bringing them all into one discoverable, searchable, and community-driven platform.
+
+- **For attendees** — find hackathons and conferences near you in seconds.
+- **For organizers** — reach a targeted audience of thousands of developers for free.
+- **For students** — never miss an opportunity to build your portfolio and network.
+
+---
+
+## ✨ Features
+
+### 🛠 Core Functionality
+- **Dynamic Discovery:** Browse and search all developer events globally.
+- **Smart Filtering:** Filter by mode (Online / Offline / Hybrid) and technical tags.
+- **Event Profiles:** Detailed event pages featuring agendas, locations, and booking links.
+
+### 🔐 Authentication & Security
+- **Secure Access:** Email and password signup/login.
+- **Session Management:** JWT sessions via **NextAuth.js v5**.
+- **Route Guarding:** Protected routes implemented via Next.js Middleware.
+
+### 📅 Event Management
+- **Media Support:** Create events with seamless image uploads via **Cloudinary**.
+- **Owner Controls:** Edit and delete your own events through a dedicated dashboard.
+- **Real-time Analytics:** Track live booking counts for every event.
+
+### 📅 Booking Management
+- Book events with email
+- Live booking count
+- Duplicate booking prevention
+
+---
+
+## 🛠 Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| **Framework** | Next.js 16 (App Router + Turbopack) |
+| **Database** | MongoDB Atlas + Mongoose |
+| **Auth** | NextAuth.js v5 (Credentials) |
+| **Styling** | Tailwind CSS |
+| **Media Storage** | Cloudinary |
+| **Deployment** | Vercel (CI/CD) |
+| **Language** | TypeScript |
+
+---
+
+## 🚀 Getting Started
+
+### Installation
 
 ```bash
+git clone [https://github.com/sadwika12/dev-hub-events.git]
+cd dev-hub-events
+npm install
+
+---
+
+### 1. Environment Setup
+
+Create a file named `.env.local` in the root directory of your project and add the following variables:
+
+MONGODB_URI=mongodb+srv://your_uri
+AUTH_SECRET=your_auth_secret
+NEXTAUTH_URL=http://localhost:3000
+base_url=http://localhost:3000
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_API_KEY=your_api_key
+CLOUDINARY_API_SECRET=your_api_secret
+
+# Start the development server
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
 ```
+## 🔮 Future Improvements & AI Integration
+- **AI-Powered Recommendations:** Implementing a recommendation engine to suggest events based on user interests and past attendance.
+- **Smart Search:** Moving beyond keywords to semantic search (NLP) to help users find events based on their learning goals.
+- **Extending Auth:** Expanding login options to include **Google and GitHub OAuth** for a faster onboarding experience.
+- **Automated Sync:** One-click **Google Calendar** integration and automated email reminders for upcoming bookings.
+- **Organizer Insights:** A data-driven dashboard for organizers featuring analytics on event reach and engagement.
+- **Real-time Engagement:** Adding attendee chat and a community review/rating system for each event.
+- **Personalized Experience:** Expanded user dashboards with event bookmarking and a "wishlist" for upcoming hackathons.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🤝 Contributing
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Contributions are welcome!
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+If you'd like to contribute to DevEvent:
 
-## Learn More
+1. Fork the repository
+2. Create a new feature branch
+3. Make your changes
+4. Commit your changes
+5. Push the branch
+6. Open a Pull Request
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+For major changes, please open an issue first.
